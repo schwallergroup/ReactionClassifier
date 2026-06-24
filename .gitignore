@@ -1,0 +1,13 @@
+# external-host artifact (upload to Zenodo, do not commit)
+reaction_db_public.parquet
+*.part
+
+# build / caches
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+.cache/
+.pytest_cache/
+*.egg-info/

@@ -1,0 +1,19 @@
+{
+  "num_classes": 6962,
+  "fp": {
+    "radius": 2,
+    "nbits": 2048,
+    "include_diff_fp": true,
+    "include_prod_fp": true,
+    "include_react_fp": false
+  },
+  "model": {
+    "hidden_dim": 512,
+    "depth": 2,
+    "dropout": 0.1,
+    "activation": "selu"
+  },
+  "n_train": 628870,
+  "n_test": 0,
+  "note": "full-data gate, no held-out test split"
+}

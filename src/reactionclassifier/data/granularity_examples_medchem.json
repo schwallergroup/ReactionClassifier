@@ -1,0 +1,294 @@
+{
+  "description": "Granularity comparison: 3 high-frequency Rxn-INSIGHT buckets vs our LLM-derived sub-classification on NNNS-2025 single-center subset (n=9,296). Buckets selected as the top-3 most frequent non-OtherReaction Rxn-INSIGHT classes.",
+  "buckets": [
+    {
+      "rxn_insight_bucket": "Suzuki coupling with boronic esters",
+      "n_reactions": 519,
+      "n_classified_by_our_system": 499,
+      "coverage_pct": 96.1,
+      "n_distinct_our_subclasses": 8,
+      "our_subclasses": [
+        {
+          "code": "3.1.1.2.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Halide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 449,
+          "fraction_of_bucket": 86.5,
+          "smirks_patterns": [
+            "[c;H0;D3;R;r6;!$(c[n,o,s]);+0:1]-[F,Cl,Br,I;H0;+0].[c;H0;D3;R;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;R;+0:1]-[F,Cl,Br,I;H0;+0].[c;H0;D3;R;r6;!$(c[n,o,s]);+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;R;+0:1]-[F,Cl,Br,I;H0;+0].[C;H0;D3;+0:2](=[C;+0:3])(-[#6;+0:4])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0;D3;+0:2](=[C;+0:3])-[#6;+0:4]"
+          ],
+          "example_reactions": [
+            "Brc1cc(OCc2ccccc2)cc(OCc2ccccc2)c1.CC=C(C)B1OC(C)(C)C(C)(C)O1>>CC=C(C)c1cc(OCc2ccccc2)cc(OCc2ccccc2)c1",
+            "Cc1ccc2c(n1)oc1c(B3OC(C)(C)C(C)(C)O3)cccc12.Cc1cc(Cl)ncc1Cl>>Cc1ccc2c(n1)oc1c(-c3cc(C)c(Cl)cn3)cccc12"
+          ]
+        },
+        {
+          "code": "3.1.3.2",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b3)-C(sp\u00b2) Coupling",
+          "tier4_label": "With Aryl/Vinylboronic Esters",
+          "n": 17,
+          "fraction_of_bucket": 3.3,
+          "smirks_patterns": [
+            "[c;H0;+0:2]-[C;H2;D2;+0:1]-[F,Cl,Br,I;H0;+0].[c;+0:3]:[c;H0;D3;+0:4](-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)):[c;+0:5]>>[c;+0:3]:[c;H0;D3;+0:4](-[C;H2;D2;+0:1]-[c;H0;+0:2]):[c;+0:5]"
+          ],
+          "example_reactions": [
+            "CC(C)(C)OC(=O)N(C(=O)OC(C)(C)C)c1nccc(CBr)c1F.[2H]C([2H])([2H])c1ccc(Oc2cncc(B3OC(C)(C)C(C)(C)O3)c2C)c(F)c1>>[2H]C([2H])([2H])c1ccc(Oc2cncc(Cc3ccnc(N(C(=O)OC(C)(C)C)C(=O)OC(C)(C)C)c3F)c2C)c(F)c1",
+            "CC(C)(C)OC(=O)N(C(=O)OC(C)(C)C)c1nccc(CBr)c1F.Cc1c(Oc2ccc(C3CC3)cc2F)cncc1B1OC(C)(C)C(C)(C)O1>>Cc1c(Cc2ccnc(N(C(=O)OC(C)(C)C)C(=O)OC(C)(C)C)c2F)cncc1Oc1ccc(C2CC2)cc1F"
+          ]
+        },
+        {
+          "code": "3.1.1.2.10",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Bromide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 14,
+          "fraction_of_bucket": 2.7,
+          "smirks_patterns": [
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[c;R;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[#6;+0:3]=[C;H0;D3;+0:2](-[#6;+0:4])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0;D3;+0:2](=[#6;+0:3])-[#6;+0:4]",
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[C;H1;D2;+0:2](=[C;H2;+0:3])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H1;D2;+0:2]=[C;H2;+0:3]"
+          ],
+          "example_reactions": [
+            "C=CB1OC(C)(C)C(C)(C)O1.Brc1cncc(Br)n1>>C=Cc1cncc(Br)n1",
+            "C=CB1OC(C)(C)C(C)(C)O1.CC(=O)Nc1cc(NC(=O)OC(C)(C)C)c(Br)cn1>>C=Cc1cnc(NC(C)=O)cc1NC(=O)OC(C)(C)C"
+          ]
+        },
+        {
+          "code": "3.1.1.2.8",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Halide + Aryl/Vinyl Neopentyl Glycol Boronate",
+          "n": 7,
+          "fraction_of_bucket": 1.3,
+          "smirks_patterns": [
+            "[c;r6;H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[c;r6;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H2;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H2;+0]-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1(C)COB(c2ccc(F)c3sc(NC(=O)OC(C)(C)C)c(C#N)c23)OC1.CC(C)(C)OC(=O)N1C2CCC1CN(c1nc(OCC3CCOCC3)nc3c(F)c(Br)c(C(F)(F)F)cc13)C2>>CC(C)(C)OC(=O)Nc1sc2c(F)ccc(-c3c(C(F)(F)F)cc4c(N5CC6CCC(C5)N6C(=O)OC(C)(C)C)nc(OCC5CCOCC5)nc4c3F)c2c1C#N",
+            "CC1(C)COB(c2ccc(F)c3sc(NC(=O)OC(C)(C)C)c(C#N)c23)OC1.Cc1nc(N2CC3CCC(C2)N3C(=O)OC(C)(C)C)c2cc(C(F)(F)F)c(Br)c(F)c2n1>>Cc1nc(N2CC3CCC(C2)N3C(=O)OC(C)(C)C)c2cc(C(F)(F)F)c(-c3ccc(F)c4sc(NC(=O)OC(C)(C)C)c(C#N)c34)c(F)c2n1"
+          ]
+        },
+        {
+          "code": "3.1.1.2.22",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Bromide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 6,
+          "fraction_of_bucket": 1.2,
+          "smirks_patterns": [
+            "[c;H0;D3;+0;$(c1ccccc1):1]-[Br;H0;+0].[c;H0;D3;+0;$(c1ccccc1):2]-[B;H0;D3;+0]1-[O;H0;D2;+0]-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;D2;+0]1>>[c;+0:1]-[c;+0:2]",
+            "[c;H0;D3;+0;$(c1ccccc1):1]-[Br;H0;+0].[#6;H2;D1;+0:2]=[C;H1;D2;+0:3]-[B;H0;D3;+0]1-[O;H0;D2;+0]-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;D2;+0]1>>[c;+0:1]-[C;+0:3]=[#6;+0:2]"
+          ],
+          "example_reactions": [
+            "C=CB1OC(C)(C)C(C)(C)O1.CN(CC(O)c1c(Br)ccc2c1OCO2)C(=O)OC(C)(C)C>>C=Cc1ccc2c(c1C(O)CN(C)C(=O)OC(C)(C)C)OCO2",
+            "C=CB1OC(C)(C)C(C)(C)O1.Brc1ccc2c(c1)COC2>>C=Cc1ccc2c(c1)COC2"
+          ]
+        },
+        {
+          "code": "3.1.1.2.9",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Chloride + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 4,
+          "fraction_of_bucket": 0.8,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[C;H0,H1;D2,D3;+0:2](=[C;+0:3])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0,H1;D2,D3;+0:2]=[C;+0:3]"
+          ],
+          "example_reactions": [
+            "Cc1cc(Cl)nc(Cl)n1.C=CB1OC(C)(C)C(C)(C)O1>>C=Cc1cc(C)nc(Cl)n1",
+            "COC(=O)c1nsc(Cl)c1Cl.CC=CB1OC(C)(C)C(C)(C)O1>>CC=Cc1snc(C(=O)OC)c1Cl"
+          ]
+        },
+        {
+          "code": "3.1.1.2.7",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Chloride + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 1,
+          "fraction_of_bucket": 0.2,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "COC(=O)c1ncc(Cl)nc1Cl.Cn1ccc(B2OC(C)(C)C(C)(C)O2)n1>>COC(=O)c1ncc(-c2ccn(C)n2)nc1Cl"
+          ]
+        },
+        {
+          "code": "3.1.1.2",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "n": 1,
+          "fraction_of_bucket": 0.2,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I,O;H0;+0].[#6;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[#6;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1(C)OB(C2=CCCCO2)OC1(C)C.COc1ccccc1-c1cc(C)ncc1C(=O)Nc1nc2ncc(Br)cc2s1>>COc1ccccc1-c1cc(C)ncc1C(=O)Nc1nc2ncc(C3=CCCCO3)cc2s1"
+          ]
+        }
+      ]
+    },
+    {
+      "rxn_insight_bucket": "Williamson Ether Synthesis",
+      "n_reactions": 407,
+      "n_classified_by_our_system": 404,
+      "coverage_pct": 99.3,
+      "n_distinct_our_subclasses": 4,
+      "our_subclasses": [
+        {
+          "code": "1.7.1.1",
+          "tier2_label": "O-Alkylation, O-Arylation, and O-Silylation",
+          "tier3_label": "Williamson Ether Synthesis (Alkoxide + Organohalide/Sulfonate)",
+          "tier4_label": "Intermolecular Alkylation of Alcohols and Phenols",
+          "n": 192,
+          "fraction_of_bucket": 47.2,
+          "smirks_patterns": [
+            "[#6;+0:1]-[O;H1;D1;+0:2].[C;H3;D1;+0:3]-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[O;H0;D2;+0:2]-[C;H3;D1;+0:3]",
+            "[#6;+0:1]-[O;H1;D1;+0:2].[C;H2;D2;+0:3]-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[O;H0;D2;+0:2]-[C;H2;D2;+0:3]",
+            "[#6;+0:1]-[O;H1;D1;+0:2].[C;H1;D3;+0:3]-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[O;H0;D2;+0:2]-[C;H1;D3;+0:3]",
+            "[#6;+0:1]-[O;H1;D1;+0:2].[C;H0;D4;+0:3]-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[O;H0;D2;+0:2]-[C;H0;D4;+0:3]"
+          ],
+          "example_reactions": [
+            "CI.C=CC[C@H](O)CCO[Si](C)(C)C(C)(C)C>>C=CC[C@@H](CCO[Si](C)(C)C(C)(C)C)OC",
+            "C=CCBr.CC(C)(C)OC(=O)N1CCC[C@@H](C(=O)O)N1C(=O)OC(C)(C)C>>C=CCOC(=O)[C@@H]1CCCN(C(=O)OC(C)(C)C)N1C(=O)OC(C)(C)C"
+          ]
+        },
+        {
+          "code": "1.7.2.1.3",
+          "tier2_label": "O-Alkylation, O-Arylation, and O-Silylation",
+          "tier3_label": "O-Arylation of Alcohols and Phenols",
+          "tier4_label": "Arylation of Aliphatic Alcohols",
+          "tier5_label": "Aliphatic Alcohol + Heteroaryl Halide -> Alkyl Heteroaryl Ether",
+          "n": 113,
+          "fraction_of_bucket": 27.8,
+          "smirks_patterns": [
+            "[C;+0:1]-[O;H1;D1;+0:2].[a;+0:3]:[c;H0;D3;+0:4](:[a;+0:5])-[F,Cl,Br;H0;+0]>>[C;+0:1]-[O;H0;D2;+0:2]-[c;H0;D3;+0:4](:[a;+0:3]):[a;+0:5]"
+          ],
+          "example_reactions": [
+            "OCC1CCOCC1.CC(C)(C)OC(=O)N1C2CCC1CN(c1nc(Cl)nc3c(F)c(Br)c(C(F)(F)F)cc13)C2>>CC(C)(C)OC(=O)N1C2CCC1CN(c1nc(OCC3CCOCC3)nc3c(F)c(Br)c(C(F)(F)F)cc13)C2",
+            "OCc1ccc(-n2nccn2)cc1.Fc1cccc(Br)n1>>Brc1cccc(OCc2ccc(-n3nccn3)cc2)n1"
+          ]
+        },
+        {
+          "code": "1.7.2.2.1",
+          "tier2_label": "O-Alkylation, O-Arylation, and O-Silylation",
+          "tier3_label": "O-Arylation of Alcohols and Phenols",
+          "tier4_label": "Arylation of Phenols",
+          "tier5_label": "Phenol + Aryl Halide/Sulfonate -> Diaryl Ether",
+          "n": 98,
+          "fraction_of_bucket": 24.1,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[O;H1;D1;+0:2].[c;H0;D3;+0:3]-[F,Cl,Br;H0;+0]>>[c;H0;+0:1]-[O;H0;D2;+0:2]-[c;H0;D3;+0:3]"
+          ],
+          "example_reactions": [
+            "Oc1cccc(O)c1.Brc1ccccn1>>Oc1cccc(Oc2ccccn2)c1",
+            "O=Cc1ccc(F)cc1.Oc1cccc(OC(F)(F)F)c1>>O=Cc1ccc(Oc2cccc(OC(F)(F)F)c2)cc1"
+          ]
+        },
+        {
+          "code": "1.7.2.2.3",
+          "tier2_label": "O-Alkylation, O-Arylation, and O-Silylation",
+          "tier3_label": "O-Arylation of Alcohols and Phenols",
+          "tier4_label": "Arylation of Phenols",
+          "tier5_label": "Phenol + Heteroaryl Halide -> Heteroaryl Aryl Ether",
+          "n": 1,
+          "fraction_of_bucket": 0.2,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[O;H1;D1;+0:2].[a;+0:3]:[c;H0;D3;+0:4](-[F,Cl,Br,I;H0;+0]):[a;+0:5]>>[c;H0;+0:1]-[O;H0;D2;+0:2]-[c;H0;D3;+0:4](:[a;+0:3]):[a;+0:5]"
+          ],
+          "example_reactions": [
+            "FC(F)(F)c1ccc(I)cc1.O=C1NCCc2c(O)cccc21>>O=C1NCCc2c(Oc3ccc(C(F)(F)F)cc3)cccc21"
+          ]
+        }
+      ]
+    },
+    {
+      "rxn_insight_bucket": "Boc amine deprotection",
+      "n_reactions": 383,
+      "n_classified_by_our_system": 383,
+      "coverage_pct": 100.0,
+      "n_distinct_our_subclasses": 4,
+      "our_subclasses": [
+        {
+          "code": "5.1.2.1.1",
+          "tier2_label": "Deprotections",
+          "tier3_label": "Cleavage of Amine Protecting Groups",
+          "tier4_label": "Carbamate Cleavage",
+          "tier5_label": "Cleavage of tert-Butoxycarbonyl (Boc) Carbamate",
+          "n": 309,
+          "fraction_of_bucket": 80.7,
+          "smirks_patterns": [
+            "[#6;!$(C=O);+0:1]-[N;H1;D2;+0:2]-[C;H0;D3;+0](=[O;D1;+0])-[O;D2;+0]-[C;H0;D4;+0](-[C;H3;D1;+0])(-[C;H3;D1;+0])-[C;H3;D1;+0]>>[#6;+0:1]-[N;H2;D1;+0:2]",
+            "[#6;!$(C=O);+0:1]-[N;H0;D3;R;+0:2](-[#6;!$(C=O);+0:3])-[C;H0;D3;+0](=[O;D1;+0])-[O;D2;+0]-[C;H0;D4;+0](-[C;H3;D1;+0])(-[C;H3;D1;+0])-[C;H3;D1;+0]>>[#6;+0:1]-[N;H1;D2;R;+0:2]-[#6;+0:3]"
+          ],
+          "example_reactions": [
+            "CO[C@]1(C)C[C@@H](C)CN(C(=O)OC(C)(C)C)[C@H](CNC2CC2)COC(=O)C(C)C(=O)[C@H](C)[C@H]1O[C@@H]1O[C@H](C)C[C@H](N(C)C)[C@H]1OC(=O)c1ccccc1>>CO[C@]1(C)C[C@@H](C)CN[C@H](CNC2CC2)COC(=O)C(C)C(=O)[C@H](C)[C@H]1O[C@@H]1O[C@H](C)C[C@H](N(C)C)[C@H]1OC(=O)c1ccccc1",
+            "CO[C@]1(C)C[C@@H](C)CN(C(=O)OC(C)(C)C)[C@H](Cn2cc(-c3cccc(N)n3)nn2)COC(=O)C(C)C(=O)[C@H](C)[C@H]1O[C@@H]1O[C@H](C)C[C@H](N(C)C)[C@H]1OC(=O)c1ccccc1>>CO[C@]1(C)C[C@@H](C)CN[C@H](Cn2cc(-c3cccc(N)n3)nn2)COC(=O)C(C)C(=O)[C@H](C)[C@H]1O[C@@H]1O[C@H](C)C[C@H](N(C)C)[C@H]1OC(=O)c1ccccc1"
+          ]
+        },
+        {
+          "code": "5.1.2.1.6",
+          "tier2_label": "Deprotections",
+          "tier3_label": "Cleavage of Amine Protecting Groups",
+          "tier4_label": "Carbamate Cleavage",
+          "tier5_label": "Deprotection of N-tert-Butoxycarbonyl (Boc) Nitrogen Heterocycle",
+          "n": 39,
+          "fraction_of_bucket": 10.2,
+          "smirks_patterns": [
+            "[#6;+0:1]-[N;H0;D3;+0:2](-[C;H0;+0](-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0])=[O;H0;+0])-[#6;+0:3]>>[#6;+0:1]-[N;H1;D2;+0:2]-[#6;+0:3]",
+            "[c,n;+0:1]:[n;H0;D3;+0:2](-[C;H0;+0](-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0])=[O;H0;+0]):[c,n;+0:3]>>[c,n;+0:1]:[n;H1;D2;+0:2]:[c,n;+0:3]"
+          ],
+          "example_reactions": [
+            "COC(=O)[C@H](Cc1cn(C(=O)OC(C)(C)C)c2cc(Cl)ccc12)N(C(=O)OC(C)(C)C)C(=O)OC(C)(C)C>>COC(=O)[C@H](Cc1cn(C(=O)OC(C)(C)C)c2cc(Cl)ccc12)NC(=O)OC(C)(C)C",
+            "CN(C[C@@H]1OC[C@H](O)c2cccc(F)c21)C(=O)OC(C)(C)C>>CNC[C@@H]1OC[C@H](O)c2cccc(F)c21"
+          ]
+        },
+        {
+          "code": "5.1.2.1.19",
+          "tier2_label": "Deprotections",
+          "tier3_label": "Cleavage of Amine Protecting Groups",
+          "tier4_label": "Carbamate Cleavage",
+          "tier5_label": "Cleavage of N,N-Bis(tert-butoxycarbonyl) Amine",
+          "n": 34,
+          "fraction_of_bucket": 8.9,
+          "smirks_patterns": [
+            "[#6;+0:1]-[N;H0;D3;+0:2](-[C;H0;+0](=[O;H0;+0])-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0])-[C;H0;+0](=[O;H0;+0])-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0]>>[#6;+0:1]-[N;H2;D1;+0:2]"
+          ],
+          "example_reactions": [
+            "C[C@H]1CC[C@]2(Cc3nc(OC[C@@]45CCCN4C[C@H](F)C5)nc(N4CC(CO)C4)c3CO2)c2c1ccc(N(C(=O)OC(C)(C)C)C(=O)OC(C)(C)C)c2C#N>>C[C@H]1CC[C@]2(Cc3nc(OC[C@@]45CCCN4C[C@H](F)C5)nc(N4CC(CO)C4)c3CO2)c2c1ccc(N)c2C#N",
+            "[2H]C([2H])([2H])c1ccc(Nc2cncc(Cc3ccnc(N(C(=O)OC(C)(C)C)C(=O)OC(C)(C)C)c3F)c2C)c(F)c1>>[2H]C([2H])([2H])c1ccc(Nc2cncc(Cc3ccnc(N)c3F)c2C)c(F)c1"
+          ]
+        },
+        {
+          "code": "5.1.2.1.16",
+          "tier2_label": "Deprotections",
+          "tier3_label": "Cleavage of Amine Protecting Groups",
+          "tier4_label": "Carbamate Cleavage",
+          "tier5_label": "Deprotection of N-tert-Butoxycarbonyl (Boc) Hydrazine",
+          "n": 1,
+          "fraction_of_bucket": 0.3,
+          "smirks_patterns": [
+            "[#7;!a;X3;!$(N-C(=O)a);+0:1]-[N;!R;H1;D2;+0:2]-[C;H0;+0](=[O;H0;+0])-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0]>>[#7;!a;+0:1]-[N;H2;D1;+0:2]",
+            "[#7;!a;X3;!$(N-C(=O)a);+0:1]-[N;!R;H0;D3;+0:2](-[#6:3])-[C;H0;+0](=[O;H0;+0])-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0]>>[#7;!a;+0:1]-[N;H1;D2;+0:2]-[#6:3]",
+            "[#7;!a;X3;$(N-C(=O)[c;$(c1ccccc1)]);+0:1]-[N;!R;H1;D2;+0:2]-[C;H0;+0](=[O;H0;+0])-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H3;+0]>>[#7;!a;+0:1]-[N;H2;D1;+0:2]"
+          ],
+          "example_reactions": [
+            "CC(C)(C)OC(=O)N(N)c1ccsc1>>NNc1ccsc1"
+          ]
+        }
+      ]
+    }
+  ]
+}

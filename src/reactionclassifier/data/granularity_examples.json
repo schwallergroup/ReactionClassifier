@@ -1,0 +1,466 @@
+{
+  "description": "Comparison of granularity: Rxn-INSIGHT's coarse bucket vs our LLM-derived sub-classification, on NNNS-2025 single-center subset (n=9,296).",
+  "buckets": [
+    {
+      "rxn_insight_bucket": "N-arylation (Buchwald-Hartwig/Ullmann-Goldberg)",
+      "n_reactions": 111,
+      "n_classified_by_our_system": 106,
+      "coverage_pct": 95.5,
+      "n_distinct_our_subclasses": 10,
+      "our_subclasses": [
+        {
+          "code": "1.3.6.1",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Heteroaryl Halides",
+          "tier4_label": "Heteroaryl Halide + Primary Aliphatic Amine",
+          "n": 54,
+          "fraction_of_bucket": 48.6,
+          "smirks_patterns": [
+            "[C;+0:1]-[N;H2;D1;+0:2].[c,n;+0:4]:[c;H0;D3;+0:3](:[c,n;+0:5])-[F,Cl,Br,I;H0;+0]>>[C;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3](:[c,n;+0:4]):[c,n;+0:5]"
+          ],
+          "example_reactions": [
+            "C1(CC1)N.NC1=NC(=C2N=CN(C2=N1)C1C[C@@H]([C@@](O1)(C#C)COC(C1=CC=C(C=C1)C)=O)OC(C1=CC=C(C=C1)C)=O)Cl>C(C)(C)(C)O.C(C)(C)N(C(C)C)CC>CC1=CC=C(C(=O)OC[C@]2(O[C@H](C[C@@H]2OC(C2=CC=C(C=C2)C)=O)N2C3=NC(=NC(=C3N=C2)NC2CC2)N)C#C)C=C1",
+            "CN.C(C)(C)(C)OC(=O)N1C2CN(CC1CC2)C2=NC(=NC1=C(C(=C(C=C21)C(F)(F)F)Br)F)Cl>O.ClCCl.C(C)(C)N(C(C)C)CC>BrC1=C(C=C2C(=NC(=NC2=C1F)NC)N1CC2CCC(C1)N2C(=O)OC(C)(C)C)C(F)(F)F"
+          ]
+        },
+        {
+          "code": "1.3.1.4",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Buchwald-Hartwig Amination",
+          "tier4_label": "Aryl Halide/Triflate + Primary Aromatic Amine (Aniline)",
+          "n": 11,
+          "fraction_of_bucket": 9.9,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[Cl,Br,I;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3]",
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[O;H0;+0]-[S;H0;+0](-[C;H0;+0](-[F;H0;+0])(-[F;H0;+0])-[F;H0;+0])(=[O;H0;+0])=[O;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3]"
+          ],
+          "example_reactions": [
+            "CC(C)OC1=CC=C(C=C1)C1=C(N)C=CC=C1.BrC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O>CO[H].ClCCl.O1CCOCC1.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.[Pd].[Pd].C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>CC(C)OC1=CC=C(C=C1)C1=C(C=CC=C1)NC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O",
+            "C(CC)OC1=CC=C(C=C1)C1=C(N)C=CC=C1.BrC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O>CO[H].ClCCl.O1CCOCC1.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.[Pd].[Pd].C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>C(CC)OC1=CC=C(C=C1)C1=C(C=CC=C1)NC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O"
+          ]
+        },
+        {
+          "code": "1.3.1.2",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Buchwald-Hartwig Amination",
+          "tier4_label": "Aryl Halide/Triflate + Primary Aliphatic Amine",
+          "n": 10,
+          "fraction_of_bucket": 9.0,
+          "smirks_patterns": [
+            "[C;+0:1]-[N;H2;D1;+0:2].[c;+0:4]:[c;H0;D3;+0:3](:[c;+0:5])-[F,Cl,Br,I;H0;+0]>>[C;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3](:[c;+0:4]):[c;+0:5]",
+            "[C;+0:1]-[N;H2;D1;+0:2].[c;+0:4]:[c;H0;D3;+0:3](:[c;+0:5])-[O;H0;+0]-[S;H0;+0](-[C;H0;+0](-[F;H0;+0])(-[F;H0;+0])-[F;H0;+0])(=[O;H0;+0])=[O;H0;+0]>>[C;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3](:[c;+0:4]):[c;+0:5]"
+          ],
+          "example_reactions": [
+            "CN.BrC1=CC=C(C=C1)[C@@H]1COC[C@@H]([C@H]1C(=O)O)C(NC1=C(C=C(C=C1)C(F)(F)F)F)=O>O1CCOCC1.CC(C)(C)[O-].[Na+].C(C)(C)(C)P(C1=C(C=CC=C1)C1=C(C=C(C=C1C(C)C)C(C)C)C(C)C)C(C)(C)C.NC1=C(C=CC=C1)C1=C(C=CC=C1)[Pd]OS(=O)(=O)C>FC1=C(C=CC(=C1)C(F)(F)F)NC(=O)[C@H]1COC[C@H]([C@@H]1C(=O)O)C1=CC=C(C=C1)NC",
+            "CN.BrC1=CC=C(C=C1)C1C(C(C2COCC2=C1)C(=O)OC)C(=O)OC>N(C)(C)C=O.C(=O)([O-])[O-].[Cs+].[Cs+].CC(C)C1=CC(=C(C(=C1)C(C)C)C2=C(C=CC(=C2P(C(C)(C)C)C(C)(C)C)OC)OC)C(C)C.CS(=O)(=O)[O-].C1=CC=C([C-]=C1)C2=CC=CC=C2N.[Pd+2]>CNC1=CC=C(C=C1)C1C(C(C2COCC2=C1)C(=O)OC)C(=O)OC"
+          ]
+        },
+        {
+          "code": "1.3.6.4",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Heteroaryl Halides",
+          "tier4_label": "Heteroaryl Halide + Primary Aromatic Amine",
+          "n": 8,
+          "fraction_of_bucket": 7.2,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[a;+0:3]:[c;H0;D3;+0:4](:[a;+0:5])-[F,Cl,Br,I;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:4](:[a;+0:3]):[a;+0:5]"
+          ],
+          "example_reactions": [
+            "NC1=CC=CC=C1.BrC1=C(C(=O)OC)C=CC=N1>[Cu]I.C1(=CC=CC=C1)C.O.C([O-])([O-])=O.[K+].[K+].N1[C@H](C(=O)O)CCC1>C1(=CC=CC=C1)NC1=C(C(=O)OC)C=CC=N1",
+            "BrC1=NC(=CC=C1[N+](=O)[O-])Br.CS(=O)(=O)N1CCCC2=CC=C(C=C12)N>CCO[H].C(C)(C)N(C(C)C)CC>BrC1=CC=C(C(=N1)NC1=CC=C2CCCN(C2=C1)S(=O)(=O)C)[N+](=O)[O-]"
+          ]
+        },
+        {
+          "code": "1.3.8.2",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Aryl Halides",
+          "tier4_label": "Aryl Halide + Primary Aromatic Amine (Aniline)",
+          "n": 7,
+          "fraction_of_bucket": 6.3,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[Br,I;H0;+0].[N;H0;+0:4]=[C;H0;+0:5]-[N;H1;D2;+0:6]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3].[N;H0;+0:4]=[C;H0;+0:5]-[N;H2;D1;+0:6]",
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[I;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3]",
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[Br;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3]"
+          ],
+          "example_reactions": [
+            "BrC1=C(C=CC(=C1)C#CC1CC1)C.NC=1N=NN(C1)CC(=O)N(C)C>O.O1CCOCC1.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.[Pd].[Pd].[Cl-].[NH4+].C(=O)([O-])[O-].[Cs+].[Cs+].P(c2ccccc2c1c(cc(cc1C(C)C)C(C)C)C(C)C)(C3CCCCC3)C4CCCCC4>C1(CC1)C#CC=1C=CC(=C(C1)NC=1N=NN(C1)CC(=O)N(C)C)C",
+            "FC=1C=C(C=CC1I)C.C(C)(C)(C)OC(N(C(=O)OC(C)(C)C)C1=NC=CC(=C1F)CC=1C=NC=C(C1C)N)=O>O.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>C(C)(C)(C)OC(=O)N(C(OC(C)(C)C)=O)C1=NC=CC(=C1F)CC=1C=NC=C(C1C)NC1=C(C=C(C=C1)C)F"
+          ]
+        },
+        {
+          "code": "1.3.5.4",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Nucleophilic Aromatic Substitution (SNAr)",
+          "tier4_label": "Electron-Deficient Heteroaryl Halide + Primary Amine",
+          "n": 5,
+          "fraction_of_bucket": 4.5,
+          "smirks_patterns": [
+            "[#6;+0:1]-[N;H2;D1;+0:2].[a;+0:3]:[c;H0;D3;+0:4](:[a;+0:5])-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:4](:[a;+0:3]):[a;+0:5]"
+          ],
+          "example_reactions": [
+            "C1(CC1)N.CC1=CC=C(C(=O)OC[C@]2(O[C@H](C[C@@H]2OC(C2=CC=C(C=C2)C)=O)N2C3=NC(=NC(=C3N=C2)Cl)F)C#C)C=C1>C(C)(C)(C)O.C(C)(C)N(C(C)C)CC>CC1=CC=C(C(=O)OC[C@]2(O[C@H](C[C@@H]2OC(C2=CC=C(C=C2)C)=O)N2C3=NC(=NC(=C3N=C2)NC2CC2)F)C#C)C=C1",
+            "C1(CC1)N.ClC1=C2N=CN(C2=NC=N1)[C@H]1C[C@@H]([C@@](O1)(C#C)COC(C1=CC=C(C=C1)C)=O)OC(C1=CC=C(C=C1)C)=O>C(C)(C)(C)O.C(C)(C)N(C(C)C)CC>CC1=CC=C(C(=O)OC[C@]2(O[C@H](C[C@@H]2OC(C2=CC=C(C=C2)C)=O)N2C3=NC=NC(=C3N=C2)NC2CC2)C#C)C=C1"
+          ]
+        },
+        {
+          "code": "1.3.6",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Heteroaryl Halides",
+          "n": 4,
+          "fraction_of_bucket": 3.6,
+          "smirks_patterns": [
+            "[#6;+0:1]-[N;H2;D1;+0:2].[#6,#7;+0:3]:[c;H0;D3;+0:4](:[#6,#7;+0:5])-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:4](:[#6,#7;+0:3]):[#6,#7;+0:5]",
+            "[#6;+0:1]-[N;H1;D2;+0:2]-[#6;+0:3].[#6,#7;+0:4]:[c;H0;D3;+0:5](:[#6,#7;+0:6])-[F,Cl,Br,I;H0;+0]>>[#6;+0:1]-[N;H0;D3;+0:2](-[#6;+0:3])-[c;H0;D3;+0:5](:[#6,#7;+0:4]):[#6,#7;+0:6]"
+          ],
+          "example_reactions": [
+            "COC(=O)C1=NC=C(C=C1)Br.FC(C1=CC=C(C=C1)N1N=C(N=C1)N)(F)F>O1CCOCC1.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.[Pd].[Pd].C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>FC(C1=CC=C(C=C1)N1N=C(N=C1)NC=1C=CC(=NC1)C(=O)OC)(F)F",
+            "BrC=1C=NC=C(C1C)Br.C1(CC1)C1=CC(=C(N)C=C1)F>[Pd+2].[O-]C(=O)C.[O-]C(=O)C.O1CCOCC1.C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>BrC=1C(=C(C=NC1)NC1=C(C=C(C=C1)C1CC1)F)C"
+          ]
+        },
+        {
+          "code": "1.3.6.4.1",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Heteroaryl Halides",
+          "tier4_label": "Heteroaryl Halide + Primary Aromatic Amine",
+          "tier5_label": "cond: Buchwald-Hartwig Amination",
+          "n": 4,
+          "fraction_of_bucket": 3.6,
+          "smirks_patterns": [],
+          "example_reactions": [
+            "ClC1=CC(=C(C=C1)I)F.BrC1=NC=CC(=C1OC)CC=1C(=C(C=NC1)N)C>O.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.O1CCOCC1.C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>BrC1=NC=CC(=C1OC)CC=1C(=C(C=NC1)NC1=C(C=C(C=C1)Cl)F)C",
+            "ClC1=CC(=C(N)C=C1)F.BrC=1C=NC=C(C1F)I>O.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>BrC=1C(=C(C=NC1)NC1=C(C=C(C=C1)Cl)F)F"
+          ]
+        },
+        {
+          "code": "1.3.5.7",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Nucleophilic Aromatic Substitution (SNAr)",
+          "tier4_label": "Electron-Deficient Heteroaryl Halide + Primary Aromatic Amine (Aniline)",
+          "n": 2,
+          "fraction_of_bucket": 1.8,
+          "smirks_patterns": [
+            "[c;+0:1]-[N;H2;D1;+0:2].[a;+0:3]:[c;H0;D3;+0:4](:[a;+0:5])-[F,Cl,Br,I;H0;+0]>>[c;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:4](:[a;+0:3]):[a;+0:5]"
+          ],
+          "example_reactions": [
+            "C(C)(C)(C)OC(=O)N1CCN(CC1)C=1C=C(N)C=CC1.BrC1=CN=C(C=2N1C=CN2)Br>C(C)(C)N(C(C)C)CC.CN1C(CCC1)=O.C(O)([O-])=O.[Na+]>BrC1=CN=C(C=2N1C=CN2)NC=2C=C(C=CC2)N2CCN(CC2)C(=O)OC(C)(C)C",
+            "C(C)(C)(C)OC(=O)N1CCN(CC1)C1=CC=C(C=C1)N.BrC1=CN=C(C=2N1C=CN2)Br>CCO[H].C(C)(C)N(C(C)C)CC>BrC1=CN=C(C=2N1C=CN2)NC2=CC=C(C=C2)N2CCN(CC2)C(=O)OC(C)(C)C"
+          ]
+        },
+        {
+          "code": "1.3.8.3",
+          "tier2_label": "N-arylation with Ar-X",
+          "tier3_label": "Amination of Aryl Halides",
+          "tier4_label": "Aryl Halide + Primary Heteroaryl Amine",
+          "n": 1,
+          "fraction_of_bucket": 0.9,
+          "smirks_patterns": [
+            "[c;H0;+0:1]-[N;H2;D1;+0:2].[c;H0;D3;+0:3]-[Cl,Br,I;H0;+0]>>[c;H0;+0:1]-[N;H1;D2;+0:2]-[c;H0;D3;+0:3]"
+          ],
+          "example_reactions": [
+            "COC1=CC=C(C=C1)C=1C(=NC=CC1)N.BrC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O>ClCCl.O1CCOCC1.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.C1=CC=C(C=C1)C=CC(=O)C=CC2=CC=CC=C2.[Pd].[Pd].C1(=CC=CC=C1)P(C1=CC=CC=2C(C3=CC=CC(=C3OC12)P(C1=CC=CC=C1)C1=CC=CC=C1)(C)C)C1=CC=CC=C1.C(=O)([O-])[O-].[Cs+].[Cs+]>COC1=CC=C(C=C1)C=1C(=NC=CC1)NC1=CC=C(C=C1)C1=NN=C(S1)NC(C)=O"
+          ]
+        }
+      ]
+    },
+    {
+      "rxn_insight_bucket": "Suzuki coupling with boronic esters",
+      "n_reactions": 519,
+      "n_classified_by_our_system": 422,
+      "coverage_pct": 81.3,
+      "n_distinct_our_subclasses": 9,
+      "our_subclasses": [
+        {
+          "code": "3.1.1.2",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "n": 294,
+          "fraction_of_bucket": 56.6,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I,O;H0;+0].[#6;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[#6;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "C1(=CC=CC=C1)S(=O)(=O)N1C=C(C2=C1N=CN=C2Cl)I.C1(=CCCC1)B1OC(C(O1)(C)C)(C)C>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.ClCCl.[Pd](Cl)Cl.C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2].C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2]>ClC=1C2=C(N=CN1)N(C=C2C2=CCCC2)S(=O)(=O)C2=CC=CC=C2",
+            "BrC=1N=CC(=NC1)N(C)C.FC(C)(F)C1=NC(=CC(=N1)NC1=CC(=NC=C1B1OC(C(O1)(C)C)(C)C)NC(C)=O)C>O.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.C([O-])([O-])=O.[K+].[K+].C1(CCCCC1)P(C1CCCCC1)C1CCCCC1.CC1OCCC1>FC(C)(F)C1=NC(=CC(=N1)NC1=CC(=NC=C1C1=NC=C(N=C1)N(C)C)NC(C)=O)C"
+          ]
+        },
+        {
+          "code": "3.1.1.2.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Halide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 58,
+          "fraction_of_bucket": 11.2,
+          "smirks_patterns": [
+            "[c;H0;D3;R;r6;!$(c[n,o,s]);+0:1]-[F,Cl,Br,I;H0;+0].[c;H0;D3;R;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;R;+0:1]-[F,Cl,Br,I;H0;+0].[c;H0;D3;R;r6;!$(c[n,o,s]);+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;R;+0:1]-[F,Cl,Br,I;H0;+0].[C;H0;D3;+0:2](=[C;+0:3])(-[#6;+0:4])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0;D3;+0:2](=[C;+0:3])-[#6;+0:4]"
+          ],
+          "example_reactions": [
+            "C(C)(C)(C)OC(=O)N1CCC(=CC1)B1OC(C(O1)(C)C)(C)C.BrC1=C(C=C(C(=C1)Br)F)F>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1>BrC=1C(=CC(=C(C1)C=1CCN(CC1)C(=O)OC(C)(C)C)F)F",
+            "BrC1=CC=C2C=CNC2=C1.C(C)(C)(C)OC(=O)N1CCC(=CC1)B1OC(C(O1)(C)C)(C)C>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>N1C=CC2=CC=C(C=C12)C1=CCN(CC1)C(=O)OC(C)(C)C"
+          ]
+        },
+        {
+          "code": "3.1.1.2.15",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Chloride + Heteroaryl Pinacol Boronate (BPin)",
+          "n": 32,
+          "fraction_of_bucket": 6.2,
+          "smirks_patterns": [
+            "[c;H0;D3;+0;r6;$(c:[n,o,s]):1]-[Cl;H0;+0].[c;H0;D3;+0;r6;$(c:a:[n,o,s]),$(c:a:a:[n,o,s]);!$(c:n);!$(c1ccc(n)cc1):2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0;r6;$(c:[n,o,s]):1]-[Cl;H0;+0].[c;H0;D3;+0;r5;$(c:[n,o,s]),$(c:a:[n,o,s]):2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1=CC=C2C(=N1)OC1=C2C=CC=C1B1OC(C(O1)(C)C)(C)C.ClC1=NC=C(C(=C1)C)Cl>O.CCO[H].C([O-])([O-])=O.[K+].[K+].COCCOC.c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1>ClC=1C(=CC(=NC1)C1=CC=CC2=C1OC1=NC(=CC=C12)C)C",
+            "ClC=1N=CC(=NC1)C(C)=O.FC(C)(F)C1=NC(=CC(=N1)NC1=CC(=NC=C1B1OC(C(O1)(C)C)(C)C)NC(C)=O)C>O.P(=O)([O-])([O-])[O-].[K+].[K+].[K+].CC1OCCC1.CC(C1=CC(C(C)C)=C(C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4)C(C(C)C)=C1)C.NC5=C(C=CC=C5)C6=C(C=CC=C6)[Pd]OS(C)(=O)=O>C(C)(=O)C=1N=CC(=NC1)C=1C(=CC(=NC1)NC(C)=O)NC1=NC(=NC(=C1)C)C(C)(F)F"
+          ]
+        },
+        {
+          "code": "3.1.1.2.10",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Bromide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 18,
+          "fraction_of_bucket": 3.5,
+          "smirks_patterns": [
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[c;R;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[#6;+0:3]=[C;H0;D3;+0:2](-[#6;+0:4])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0;D3;+0:2](=[#6;+0:3])-[#6;+0:4]",
+            "[c;R;$(a:[n,o,s]),$(a:a:[n,o,s]),$(a:a:a:[n,o,s]);!$(c1[n,nH]ncc1);!$(c1n[nH]cc1);H0;D3;+0:1]-[Br;H0;+0].[C;H1;D2;+0:2](=[C;H2;+0:3])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H1;D2;+0:2]=[C;H2;+0:3]"
+          ],
+          "example_reactions": [
+            "C(=C)B1OC(C)(C)C(C)(C)O1.BrC1=C(C2=C(OCO2)C=C1)C(CN(C(OC(C)(C)C)=O)C)O>O.O1CCOCC1.C([O-])([O-])=O.[Na+].[Na+].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>OC(CN(C(OC(C)(C)C)=O)C)C1=C(C=CC=2OCOC21)C=C",
+            "C(=C)B1OC(C)(C)C(C)(C)O1.BrC=1C=C2COCC2=CC1>O.C([O-])([O-])=O.[K+].[K+].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>C(=C)C=1C=C2COCC2=CC1"
+          ]
+        },
+        {
+          "code": "3.1.1.2.7",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Chloride + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 8,
+          "fraction_of_bucket": 1.5,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1(OB(OC1(C)C)C1=CCN(CC1)C)C.ClC1=CC=C2C(=N1)C=C(O2)C(=O)NC=2C=C(C=1N(C2)C=C(N1)C)F>C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>FC=1C=2N(C=C(C1)NC(=O)C1=CC3=NC(=CC=C3O1)C=1CCN(CC1)C)C=C(N2)C",
+            "C(C)(C)(C)OC(=O)N1CCC(=CC1)B1OC(C(O1)(C)C)(C)C.ClC1=CN=C2C(=N1)SC(=C2)C(=O)NC=2C=C(C=1N(C2)C=C(N1)C)F>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>FC=1C=2N(C=C(C1)NC(=O)C1=CC=3C(=NC(=CN3)C=3CCN(CC3)C(=O)OC(C)(C)C)S1)C=C(N2)C"
+          ]
+        },
+        {
+          "code": "3.1.1.2.9",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Chloride + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 8,
+          "fraction_of_bucket": 1.5,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[C;H0,H1;D2,D3;+0:2](=[C;+0:3])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0,H1;D2,D3;+0:2]=[C;+0:3]"
+          ],
+          "example_reactions": [
+            "ClC1=NC(=CC(=N1)Cl)C.C(=C)B1OC(C)(C)C(C)(C)O1>O.O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2].P(=O)([O-])([O-])[O-].[K+].[K+].[K+]>ClC1=NC(=CC(=N1)C)C=C",
+            "CC1(OB(OC1(C)C)C(=C)C)C.ClC1=NC(=NC(=C1)Cl)C(C)(F)F>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>ClC1=NC(=NC(=C1)C(=C)C)C(C)(F)F"
+          ]
+        },
+        {
+          "code": "3.1.1.2.22",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Bromide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 2,
+          "fraction_of_bucket": 0.4,
+          "smirks_patterns": [
+            "[c;H0;D3;+0;$(c1ccccc1):1]-[Br;H0;+0].[c;H0;D3;+0;$(c1ccccc1):2]-[B;H0;D3;+0]1-[O;H0;D2;+0]-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;D2;+0]1>>[c;+0:1]-[c;+0:2]",
+            "[c;H0;D3;+0;$(c1ccccc1):1]-[Br;H0;+0].[#6;H2;D1;+0:2]=[C;H1;D2;+0:3]-[B;H0;D3;+0]1-[O;H0;D2;+0]-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;D4;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;D2;+0]1>>[c;+0:1]-[C;+0:3]=[#6;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1(OB(OC1(C)C)C=1C=C2CCN(CC2=CC1)C(=O)OCC1=CC=CC=C1)C.BrC(C(=O)OC(C)(C)C)=C>O.O1CCOCC1.C(=O)([O-])[O-].[Cs+].[Cs+].Cl[Pd](P(C(C)(C)C)(C(C)(C)C)C1=CC=C(C=C1)N(C)C)(P(C1=CC=C(C=C1)N(C)C)(C(C)(C)C)C(C)(C)C)Cl>CC(C)(C)OC(C(=C)C=1C=C2CCN(CC2=CC1)C(=O)OCC1=CC=CC=C1)=O",
+            "CC1(OB(OC1(C)C)C=C(C)C)C.BrC1=CC(=C(NC=2C(=C(C=NC2)CC2=C(C(=NC=C2)N(C(OC(C)(C)C)=O)C(=O)OC(C)(C)C)F)C)C=C1)F>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.ClCCl.[Pd](Cl)Cl.C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2].C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2]>C(C)(C)(C)OC(=O)N(C(OC(C)(C)C)=O)C1=NC=CC(=C1F)CC=1C=NC=C(C1C)NC1=C(C=C(C=C1)C=C(C)C)F"
+          ]
+        },
+        {
+          "code": "3.1.1.2.11",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Heteroaryl Iodide + Aryl/Vinyl Pinacol Boronate (BPin)",
+          "n": 1,
+          "fraction_of_bucket": 0.2,
+          "smirks_patterns": [
+            "[c;H0;D3;+0;!$(c1:c:c:c:c:c:1);!$(c1:c:c:c:c:1);!$(c1:*:*:*:*:*:1-@a);!$(c1:*:*:*:*:1-@a):1]-[I;H0;+0].[c;H0;D3;+0;$(c1:c:c:c:c:c:1):2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0;!$(c1:c:c:c:c:c:1);!$(c1:c:c:c:c:1):1]-[I;H0;+0].[c;H0;D3;+0;$(c1:n:c:c:c:c:1);R1:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0;!$(c1:c:c:c:c:c:1);!$(c1:c:c:c:c:1):1]-[I;H0;+0].[C;H0;D3;+0:2](=[C;H1,H2;+0:3])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[C;H0;D3;+0:2]=[C;H1,H2;+0:3]",
+            "[c;H0;D3;+0;!$(c1:c:c:c:c:c:1);!$(c1:c:c:c:c:1);$(c1:*:*:*:*:*:1-@a),$(c1:*:*:*:*:1-@a):1]-[I;H0;+0].[c;H0;D3;+0;$(c1:c:c:c:c:c:1);!R1:2]-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "CC1(OB(OC1(C)C)C=1C2CN(C(C1)CC2)C(=O)OC(C)(C)C)C.ClC1=C(C2=C(C=N1)C(=NN2C)I)F>O.O1CCOCC1.P(=O)([O-])([O-])[O-].[K+].[K+].[K+].CCCCP(C12CC3CC(C1)CC(C3)C2)C45CC6CC(C4)CC(C6)C5.CS(=O)(=O)[O-].C1=CC=C([C-]=C1)C2=CC=CC=C2N.[Pd+2]>ClC1=C(C2=C(C=N1)C(=NN2C)C=2C1CN(C(C2)CC1)C(=O)OC(C)(C)C)F"
+          ]
+        },
+        {
+          "code": "3.1.1.2.18",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Esters",
+          "tier5_label": "Aryl/Vinyl Bromide + Heteroaryl Pinacol Boronate (BPin)",
+          "n": 1,
+          "fraction_of_bucket": 0.2,
+          "smirks_patterns": [
+            "[c,n,o,s;+0:1]:[c;H0;D3;+0:2](:[c,n,o,s;+0:3])-[Br;H0;+0].[c,n,o,s;+0:4]:[c;H0;D3;+0:5](:[c,n,o,s;+0:6])-[B;H0;+0]1(-[O;H0;+0]-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[C;H0;+0](-[C;H3;+0])(-[C;H3;+0])-[O;H0;+0]1)>>[c,n,o,s;+0:1]:[c;H0;D3;+0:2](:[c,n,o,s;+0:3])-[c;H0;D3;+0:5](:[c,n,o,s;+0:4]):[c,n,o,s;+0:6]"
+          ],
+          "example_reactions": [
+            "BrC1=C(C=CC=C1)C.O1C(=CC=C1)B1OC(C(O1)(C)C)(C)C>C1(=CC=CC=C1)C.O.CO[H].C([O-])([O-])=O.[K+].[K+].c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1>C1(=C(C=CC=C1)C=1OC=CC1)C"
+          ]
+        }
+      ]
+    },
+    {
+      "rxn_insight_bucket": "Suzuki coupling with boronic acids",
+      "n_reactions": 157,
+      "n_classified_by_our_system": 132,
+      "coverage_pct": 84.1,
+      "n_distinct_our_subclasses": 8,
+      "our_subclasses": [
+        {
+          "code": "3.1.1.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Acids",
+          "n": 63,
+          "fraction_of_bucket": 40.1,
+          "smirks_patterns": [
+            "[a;+0:1]:[c;H0;D3;+0:2](:[a;+0:3])-[Cl,Br,I,O;H0;+0].[a;+0:4]:[c;H0;D3;+0:5](:[a;+0:6])-[B;H0;+0]>>[a;+0:1]:[c;H0;D3;+0:2](:[a;+0:3])-[c;H0;D3;+0:5](:[a;+0:4]):[a;+0:6]",
+            "[a;+0:1]:[c;H0;D3;+0:2](:[a;+0:3])-[Cl,Br,I,O;H0;+0].[a;+0:4]:[c;H0;D3;+0:5](:[a;+0:6])-[O;H0;+0]-[B;H0;+0]>>[a;+0:1]:[c;H0;D3;+0:2](:[a;+0:3])-[c;H0;D3;+0:5](:[a;+0:4]):[a;+0:6]"
+          ],
+          "example_reactions": [
+            "ClC=1C=C(C=C(C1)Cl)B(O)O.BrC1=C(NC=2C1=NC=CC2)C2=C(C=NC=C2)OCCN(C(C=C)=O)C>O.C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P(C2=CC=CC=C2)C3=CC=CC=C3.[Cl-].[Cl-].[Pd+2].c3c(P(c1ccccc1)c2ccccc2)cccc3.C([O-])([O-])=O.[K+].[K+].C(CC)O>ClC=1C=C(C=C(C1)Cl)C1=C(NC=2C1=NC=CC2)C2=C(C=NC=C2)OCCN(C(C=C)=O)C",
+            "ClC=1C=CC(=C(C1)B(O)O)F.BrC1=C(N(C=2C1=NC=CC2)S(=O)(=O)C2=CC=C(C=C2)C)C2=C(C=NC=C2)OC>O.O1CCOCC1.C([O-])([O-])=O.[Na+].[Na+].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>ClC=1C=CC(=C(C1)C1=C(N(C=2C1=NC=CC2)S(=O)(=O)C2=CC=C(C=C2)C)C2=C(C=NC=C2)OC)F"
+          ]
+        },
+        {
+          "code": "3.1.1.1.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Acids",
+          "tier5_label": "Aryl/Vinyl Bromide or Iodide + Aryl/Vinyl Boronic Acid (Classic Suzuki)",
+          "n": 32,
+          "fraction_of_bucket": 20.4,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Br,I;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]",
+            "[c;H0;D3;+0:1]-[Br,I;H0;+0].[c;H0;D3;+0:2]-[O;H0;+0]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "FC1=C(C=CC(=C1)F)B(O)O.BrC1=NC(=CC2=C1N=C(N(C2=O)C)C(F)(F)F)Cl>O.ClCCl.C(C)(=O)OCC.O1CCOCC1.C([O-])([O-])=O.[Na+].[Na+].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>ClC1=CC2=C(N=C(N(C2=O)C)C(F)(F)F)C(=N1)C1=C(C=C(C=C1)F)F",
+            "IC1=CC2=NC=CC=C2N1S(=O)(=O)C1=CC=C(C=C1)C.C(C)(C)(C)OC(=O)N1C(CC1)COC=1C=NC=CC1B(O)O>O.O1CCOCC1.c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1.C(=O)([O-])[O-].[Cs+].[Cs+]>CC1=CC=C(C=C1)S(=O)(=O)N1C(=CC2=NC=CC=C21)C2=C(C=NC=C2)OCC2N(CC2)C(=O)OC(C)(C)C"
+          ]
+        },
+        {
+          "code": "3.1.1.1.13",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Acids",
+          "tier5_label": "Heteroaryl Halide + Heteroaryl Boronic Acid",
+          "n": 15,
+          "fraction_of_bucket": 9.6,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "ClC=1N=NC=C(C1)Cl.C(C)(=O)NC1=CC(=C(C=N1)B(O)O)NC1=NC(=NC(=C1)C)C(C)(F)F>O.O1CCOCC1.P(=O)([O-])([O-])[O-].[K+].[K+].[K+].ClCCl.[Pd](Cl)Cl.C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2].C1(=CC=CC=C1)P(C1=CC=CC=C1)[C-]1C=CC=C1.[CH-]1C=CC=C1.[Fe+2]>ClC=1C=C(N=NC1)C=1C(=CC(=NC1)NC(C)=O)NC1=NC(=NC(=C1)C)C(C)(F)F",
+            "COC1=C(C=CC=C1)B(O)O.ClC=1C(=CNC(C1)=O)C(=O)OC>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>COC1=C(C=CC=C1)C=1C(=CNC(C1)=O)C(=O)OC"
+          ]
+        },
+        {
+          "code": "3.1.2.1.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b3) Coupling (e.g., Alkylarene Synthesis)",
+          "tier4_label": "With Alkylboronic Acids",
+          "tier5_label": "Aryl/Vinyl Halide + Alkylboronic Acid",
+          "n": 10,
+          "fraction_of_bucket": 6.4,
+          "smirks_patterns": [
+            "[c;$(c1ccccc1),$(c1ncccc1);R1,$(c1ccc2ccccc2c1);H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[C;H1;D3;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[C;H1;D3;+0:2]",
+            "[c;$(c1ccccc1),$(c1ncccc1);R1,$(c1ccc2ccccc2c1);H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[C;H3;D1;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[C;H3;D1;+0:2]"
+          ],
+          "example_reactions": [
+            "C1(CC1)B(O)O.C(C)(=O)NC1=NC=C(C(=C1)NC(OC(C)(C)C)=O)Br>O.C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>C(C)(=O)NC1=NC=C(C(=C1)NC(OC(C)(C)C)=O)C1CC1",
+            "C1(CC1)B(O)O.BrC=1C(=C(OC2CN(C2)C(=O)OC(C)(C)C)C=CC1)Cl>O.O1CCOCC1.C([O-])([O-])=O.[Na+].[Na+].C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>ClC1=C(OC2CN(C2)C(=O)OC(C)(C)C)C=CC=C1C1CC1"
+          ]
+        },
+        {
+          "code": "3.1.2.1.3",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b3) Coupling (e.g., Alkylarene Synthesis)",
+          "tier4_label": "With Alkylboronic Acids",
+          "tier5_label": "Heteroaryl Chloride + Alkylboronic Acid",
+          "n": 5,
+          "fraction_of_bucket": 3.2,
+          "smirks_patterns": [
+            "[C;H3;D1;+0:1]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0].[n;a;+0:2]:[c;H0;D3;+0:3](-[Cl;H0;+0]):[#6,#7;a;+0:4]>>[C;H3;D1;+0:1]-[c;H0;D3;+0:3](:[n;a;+0:2]):[#6,#7;a;+0:4]",
+            "[C;H3;D1;+0:1]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0].[n;a;+0:2]:[#6,#7;a;+0:5]:[c;H0;D3;+0:3](-[Cl;H0;+0]):[#6,#7;a;+0:4]>>[C;H3;D1;+0:1]-[c;H0;D3;+0:3](:[#6,#7;a;+0:4]):[#6,#7;a;+0:5]:[n;a;+0:2]",
+            "[#6;+0:1]-[C;H1;D3;+0:2](-[#6;+0:3])-[B;H0;+0](-[O;H1;+0])-[O;H1;+0].[n;a;+0:4]:[c;H0;D3;+0:5](-[Cl;H0;+0]):[#6,#7;a;+0:6]>>[#6;+0:1]-[C;H1;D3;+0:2](-[#6;+0:3])-[c;H0;D3;+0:5](:[n;a;+0:4]):[#6,#7;a;+0:6]",
+            "[#6;+0:1]-[C;H1;D3;+0:2](-[#6;+0:3])-[B;H0;+0](-[O;H1;+0])-[O;H1;+0].[n;a;+0:4]:[#6,#7;a;+0:7]:[c;H0;D3;+0:5](-[Cl;H0;+0]):[#6,#7;a;+0:6]>>[#6;+0:1]-[C;H1;D3;+0:2](-[#6;+0:3])-[c;H0;D3;+0:5](:[#6,#7;a;+0:6]):[#6,#7;a;+0:7]:[n;a;+0:4]"
+          ],
+          "example_reactions": [
+            "C1(CC1)B(O)O.ClC1=NC(=CC(=C1)N1C(N(C2(C1=O)CCN(CC2)CC2CCOCC2)CC)=O)C(F)(F)F>C1(=CC=CC=C1)C.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.P(=O)([O-])([O-])[O-].[K+].[K+].[K+].COC1=C(C(=CC=C1)OC)C1=C(C=CC=C1)P(C1CCCCC1)C1CCCCC1>C1(CC1)C1=NC(=CC(=C1)N1C(N(C2(C1=O)CCN(CC2)CC2CCOCC2)CC)=O)C(F)(F)F",
+            "CB(O)O.ClC1=C2C(=C(C(NC2=CC=N1)=O)C(C(=O)OC)C)C>C([O-])([O-])=O.[K+].[K+].O1CCOCC1.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.C1=CC=C(C=C1)P([C-]2C=CC=C2)C3=CC=CC=C3.Cl[Pd]Cl.[Fe+2]>CC1=C(C(NC2=CC=NC(=C12)C)=O)C(C(=O)OC)C"
+          ]
+        },
+        {
+          "code": "3.1.3.1.1",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b3)-C(sp\u00b2) Coupling",
+          "tier4_label": "With Aryl/Vinylboronic Acids",
+          "tier5_label": "Activated Alkyl Halide (Benzyl/Allyl) + Aryl/Vinyl Boronic Acid",
+          "n": 5,
+          "fraction_of_bucket": 3.2,
+          "smirks_patterns": [],
+          "example_reactions": [
+            "BrCC1=C(C(=NC=C1)N(C(OC(C)(C)C)=O)C(=O)OC(C)(C)C)F.FC1=C(OC=2C(=C(C=NC2)B(O)O)C)C=CC(=C1)OC>C1(=CC=CC=C1)C.O.ClCCl.[Fe].CCO[H].Cl[Pd]Cl.C(=O)([O-])[O-].[Cs+].[Cs+].C1(CCCC1)P(C1=CC=CC=C1)C1=CC=CC=C1>C(C)(C)(C)OC(=O)N(C(OC(C)(C)C)=O)C1=NC=CC(=C1F)CC=1C=NC=C(C1C)OC1=C(C=C(C=C1)OC)F",
+            "BrCC1=C(C(=NC=C1)N(C(OC(C)(C)C)=O)C(=O)OC(C)(C)C)F.ClC1=CC(=C(OC=2C(=C(C=NC2)B(O)O)C)C=C1)F>C1(=CC=CC=C1)C.O.CCO[H].C([O-])([O-])=O.[Na+].[Na+].c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1>C(C)(C)(C)OC(N(C1=NC=CC(=C1F)CC=1C=NC=C(C1C)OC1=C(C=C(C=C1)Cl)F)C(=O)OC(C)(C)C)=O"
+          ]
+        },
+        {
+          "code": "3.1.2.1.4",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b3) Coupling (e.g., Alkylarene Synthesis)",
+          "tier4_label": "With Alkylboronic Acids",
+          "tier5_label": "Heteroaryl Bromide + Alkylboronic Acid",
+          "n": 1,
+          "fraction_of_bucket": 0.6,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[C;H3;D1;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[C;H3;D1;+0:2]",
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[C;H2;D2;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[C;H2;D2;+0:2]",
+            "[c;H0;D3;+0:1]-[F,Cl,Br,I;H0;+0].[C;H1;D3;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[C;H1;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "C1(CC1)B(O)O.BrC1=C(C(=O)OCC)C(=CC=N1)C>C1(=CC=CC=C1)C.O.[Pd+2].[O-]C(=O)C.[O-]C(=O)C.P(=O)([O-])([O-])[O-].[K+].[K+].[K+].C1(CCCCC1)P(C1CCCCC1)C1CCCCC1>C1(CC1)C1=C(C(=O)OCC)C(=CC=N1)C"
+          ]
+        },
+        {
+          "code": "3.1.1.1.2",
+          "tier2_label": "Suzuki-Miyaura Coupling",
+          "tier3_label": "C(sp\u00b2)-C(sp\u00b2) Coupling (e.g., Biaryl or Styrene Synthesis)",
+          "tier4_label": "With Boronic Acids",
+          "tier5_label": "Aryl/Vinyl Chloride + Aryl/Vinyl Boronic Acid",
+          "n": 1,
+          "fraction_of_bucket": 0.6,
+          "smirks_patterns": [
+            "[c;H0;D3;+0:1]-[Cl;H0;+0].[c;H0;D3;+0:2]-[B;H0;+0](-[O;H1;+0])-[O;H1;+0]>>[c;H0;D3;+0:1]-[c;H0;D3;+0:2]"
+          ],
+          "example_reactions": [
+            "C(C1=CC=CC=C1)OC1=CC(=NC(=C1)C=C)Cl.C(C)(C)(C)C1=CC(=C(C(=C1)C)B(O)O)OC1=C(C=C(C=C1)F)OC>C([O-])([O-])=O.[K+].[K+].O1CCOCC1.c1ccc(cc1)[P](c2ccccc2)(c3ccccc3)[Pd]([P](c4ccccc4)(c5ccccc5)c6ccccc6)([P](c7ccccc7)(c8ccccc8)c9ccccc9)[P](c1ccccc1)(c1ccccc1)c1ccccc1>C(C1=CC=CC=C1)OC1=CC(=NC(=C1)C=C)C1=C(C=C(C=C1C)C(C)(C)C)OC1=C(C=C(C=C1)F)OC"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -42,8 +42,11 @@ So: if `reaction_code` is populated you have a verified label; otherwise
 ### Taxonomy and granularity examples
 
 ```python
-from reactionclassifier import load_taxonomy, name_for, tier_path, load_granularity
-load_taxonomy()["1.3.6"]      # -> human-readable class name
+from reactionclassifier import load_taxonomy, name_for, full_class_name, tier_path, load_granularity
+load_taxonomy()["1.3.6"]      # -> single class name
+name_for("2.1.2.1")           # -> single-level name
+full_class_name("2.1.2.1")    # -> pipe-joined L3|L4|L5 names, e.g.
+                              #    'Amidation using Carboxylic Acids | Primary Amine + Carboxylic Acid to Secondary Amide'
 tier_path("1.3.6.2")          # -> ['1.3', '1.3.6', '1.3.6.2']
 load_granularity()            # the two granularity-comparison tables
 ```

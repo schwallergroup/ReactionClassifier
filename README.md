@@ -1,5 +1,5 @@
 # ReactionClassifier
-Use this tool if you want to classify chemnical reactions to the highest possible level of granularity with minimal dependencies!
+Use this tool if you want to classify or name chemical reactions to the highest possible level of granularity with minimal dependencies!
 
 Hierarchical neuro-symbolic reaction classification/reaction naming. Given a reaction SMILES, it
 predicts a class in an LLM-derived reaction taxonomy and **confirms it

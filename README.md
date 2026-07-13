@@ -1,6 +1,7 @@
 # ReactionClassifier
+Use this tool if you want to classify chemnical reactions to the highest possible level of granularity with minimal dependencies!
 
-Hierarchical reaction classification. Given a reaction SMILES, it
+Hierarchical neuro-symbolic reaction classification/reaction naming. Given a reaction SMILES, it
 predicts a class in an LLM-derived reaction taxonomy and **confirms it
 symbolically**: a Morgan difference–product (MDP) fingerprint MLP gate
 proposes a class, the exact retrosynthetic templates in that class's tier-3

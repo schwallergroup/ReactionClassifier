@@ -166,3 +166,14 @@ def test_bare_level2_answer_becomes_other(tmp_path, monkeypatch):
     # The detailed agent answered "2.1"; the pipeline holds it to "2.1.Other".
     assert run() == ["2.1.Other"]
     assert run(allow_level2_class=True) == ["2.1"]
+
+
+def test_flat_taxonomy_file_loads(tmp_path):
+    from rxn_classifier.classification.utils import load_mapping
+
+    flat = tmp_path / "flat.json"
+    flat.write_text(json.dumps({"2.1": "N-acylation to amide", "2.1.1": "Amidation", "3.1.1": "Suzuki coupling"}))
+    assert load_mapping(flat) == {
+        "2.1": ["2.1 N-acylation to amide", "2.1.1 Amidation"],
+        "3.1": ["3.1.1 Suzuki coupling"],
+    }

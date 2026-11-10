@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -85,6 +86,7 @@ def load_mapping(mapping_json: Optional[Path]) -> Optional[Dict[str, List[str]]]
     - {"2.1": ["2.1.1 Label", "2.1.1.1 Label", ...]}
     - {"2.1": {"2.1.1": "Label", "2.1.1.1": "Label", ...}}
     - {"2.1": {"descendants": ["2.1.1 Label", ...] or {"2.1.1": "Label", ...}}}
+    - {"2.1": "Label", "2.1.1": "Label", ...} (flat code -> name)
     Other keys are ignored. Returns None if parsing fails.
     """
     if not mapping_json:
@@ -144,6 +146,18 @@ def load_mapping(mapping_json: Optional[Path]) -> Optional[Dict[str, List[str]]]
                         out.append(f"{ck} {label}".strip())
             return out
         return []
+
+    # Flat shape {"2.1": "Label", "2.1.1": "Label", ...}: group lines under their X.Y code
+    code_re = re.compile(r"^\d+(?:\.\d+)+$")
+    if isinstance(data, dict) and data and all(
+        isinstance(k, str) and code_re.match(k) and isinstance(v, str) and "\n" not in v
+        and not re.match(r"^\d+\.\d+", v.strip())
+        for k, v in data.items()
+    ):
+        flat: Dict[str, List[str]] = {}
+        for k, v in data.items():
+            flat.setdefault(".".join(k.split(".")[:2]), []).append(f"{k} {v}".strip())
+        return flat
 
     cleaned: Dict[str, List[str]] = {}
     if isinstance(data, dict):

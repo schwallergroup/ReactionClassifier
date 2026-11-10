@@ -112,6 +112,9 @@ cohorts skip the generator and are written as `HIERARCHY_MISMATCH:<code>`.
 | `taxonomy/seed_level2.json` | The level-2 classes only, with nothing below them. Use it to grow a taxonomy from scratch. |
 | `taxonomy/taxonomy.json` | The full taxonomy from our runs (14,060 entries). Use it to classify new reactions into the published classes, or to keep growing them. |
 
+The loader also reads a flat `{"2.1.1": "Label", ...}` file, such as
+`data/taxonomy.json` in the `reactionclassifier` package.
+
 Set `mapping_json` to one of them. The example config uses the seed; to start
 from the full taxonomy, change that line to `"taxonomy/taxonomy.json"`.
 

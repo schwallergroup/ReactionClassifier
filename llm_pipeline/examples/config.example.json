@@ -1,0 +1,59 @@
+{
+  "input_csv": "examples/reactions.csv",
+  "output_csv": "examples/output/classified.csv",
+  "llm_model": "models/gemini-3.8-flash",
+  "smiles_column": "reaction_smiles",
+  "template_column": "retro_template",
+  "temperature": 0.2,
+  "thinking_budget": 2048,
+  "mapping_json": "taxonomy/seed_level2.json",
+  "enable_verification": true,
+  "fail_on_noop": true,
+  "test_mode": {
+    "enabled": true,
+    "output_dir": "examples/output/artifacts"
+  },
+  "cohort_mode": {
+    "template_hash_column": "template_hash",
+    "cohort_batch_size": 50,
+    "max_cohorts_per_llm_job": 600,
+    "reactions_per_cohort": 5,
+    "sample_seed": 0
+  },
+  "hierarchy_agent": {
+    "model": "models/gemini-3.8-flash",
+    "temperature": 0.1,
+    "thinking_budget": 1024,
+    "strip_mapping": true
+  },
+  "detailed_agent": {
+    "model": "models/gemini-3.8-flash",
+    "temperature": 0.1,
+    "thinking_budget": 2048,
+    "strip_mapping": true,
+    "enabled": true
+  },
+  "verifier_agent": {
+    "enabled": true,
+    "model": "models/gemini-3.1-pro-preview",
+    "temperature": 0.1,
+    "thinking_budget": 1024,
+    "strip_mapping": true
+  },
+  "generator_agent": {
+    "enabled": true,
+    "model": "models/gemini-3.1-pro-preview",
+    "temperature": 0.1,
+    "thinking_budget": 2048,
+    "strip_mapping": true
+  },
+  "aggregator_agent": {
+    "enabled": true,
+    "model": "models/gemini-3.1-pro-preview",
+    "temperature": 0.1,
+    "thinking_budget": 2048,
+    "max_cohorts_per_call": 10,
+    "strip_mapping": true,
+    "dynamic_mapping_output_json": "examples/output/mapping_v1.json"
+  }
+}

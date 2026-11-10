@@ -52,8 +52,9 @@ same sample in every run, however the rows are ordered.
 
 The class hierarchy has two parts:
 
-- **Levels 1 and 2** (`X.Y`, for example `2.1 N-acylation to amide`) are fixed.
-  They are written in `prompts/hierarchy_classification.py`.
+- **Levels 1 and 2** (`X.Y`, for example `2.1 N-acylation to amide`). The
+  hierarchy agent chooses among the 60 level-2 classes written in
+  `prompts/hierarchy_classification.py`.
 - **Level 3 and deeper** live in the mapping JSON (`mapping_json`), shaped as
   `{"2.1": ["2.1.1 Label", "2.1.1.1 Label", ...]}`. This part grows during a run.
 
@@ -153,10 +154,36 @@ works.
 a given stage, reading earlier results from `hierarchy_codes_path`,
 `detailed_results_path` and `verify_results_path`.
 
+## Reproducing the published runs
+
+Three defaults differ from the settings of the runs behind the published
+taxonomy. To get the original behaviour, set:
+
+| Key | Published runs | Default here | Effect of the default |
+| --- | --- | --- | --- |
+| `cohort_mode.reactions_per_cohort` | `10` | `5` | Fewer reactions shown per cohort |
+| `cohort_mode.sample_seed` | `null` (first rows of the file) | `0` | Shown reactions are drawn at random |
+| `detailed_agent.allow_level2_class` | `true` | `false` | A bare `X.Y` answer is sent on to the generator |
+
+With these three set, the prompts sent to each agent are the same as in the
+original code. Two further differences cannot be switched back: the original
+code wrote classes only for the reactions the agents saw (this package labels
+every reaction of the cohort), and the original models have been retired by
+Google (see Config).
+
+Known behaviour kept from the original runs:
+
+- The verifier's `<action>` tag is not acted on unless
+  `verifier_agent.exclude_hierarchy_mismatch` is set (see above).
+- The generator prompt contains a `{{cause}}` placeholder that is sent as
+  written; the verifier's cause is not passed to the generator.
+- A failed LLM call in the hierarchy, detailed, verifier or generator stage is
+  logged and treated as an empty answer; the run continues.
+
 ## Tests
 
 ```bash
 pip install -e ".[test]" && pytest
 ```
 
-The test runs the whole pipeline with a scripted LLM and needs no API key.
+The tests run the whole pipeline with a scripted LLM and need no API key.

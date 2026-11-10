@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Five-agent LLM pipeline that classifies chemical reactions and grows the class hierarchy"
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Daniel Armstrong"}]
 dependencies = [
     "google-genai>=1.45.0",
     "pandas>=2.0",

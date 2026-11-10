@@ -4,12 +4,32 @@ An LLM pipeline that assigns chemical reactions to a class hierarchy and adds
 new classes to that hierarchy when no existing class fits. Five agents run in
 sequence: hierarchy, detailed, verifier, generator, aggregator.
 
+## System requirements
+
+- **Operating system.** Any system that runs Python. Tested on Linux
+  (Ubuntu 22.04).
+- **Python.** 3.10 or newer. Tested on 3.11.
+- **Dependencies** (installed by `pip`), with the versions tested:
+
+  | Package | Required | Tested |
+  | --- | --- | --- |
+  | `google-genai` | >= 1.45.0 | 1.75.0, 3.0.0 |
+  | `pandas` | >= 2.0 | 2.3.3, 3.1.1 |
+  | `pydantic` | >= 2.0 | 2.12.3, 2.14.3 |
+  | `rdkit` (optional) | any | 2023.9.6 |
+
+- **Hardware.** No special hardware. The package runs no model locally; all
+  LLM calls go to the Gemini API, so it needs an internet connection and a
+  Gemini API key.
+
 ## Install
 
 ```bash
 pip install -e .            # add ".[rdkit]" to strip atom maps with RDKit
 export GEMINI_API_KEY=...   # the agents call Gemini through google-genai
 ```
+
+Install takes about 10 seconds on a desktop computer.
 
 Weave tracing of LLM calls and Weights & Biases logging of batch statistics are
 optional. Set `weave_project` and `wandb_project` in the config to turn them on.
@@ -20,6 +40,33 @@ optional. Set `weave_project` and `wandb_project` in the config to turn them on.
 rxn-classify --config examples/config.example.json
 # or: python -m rxn_classifier.classification --config examples/config.example.json
 ```
+
+### Demo
+
+The command above is the demo. It classifies the three reactions in
+`examples/reactions.csv` (two amide couplings that share a template, and one
+Suzuki coupling), starting from `taxonomy/seed_level2.json`. It takes about 3
+to 4 minutes; nearly all of that is waiting for the API.
+
+Expected output, in `examples/output/`:
+
+- `classified.csv`, one row per input reaction. The two amide couplings get
+  the same class under `2.1`, and the Suzuki coupling a class under `3.1`:
+
+  | reaction | LLM class number | LLM reaction subtype |
+  | --- | --- | --- |
+  | amide coupling 1 | `2.1.1.1` | Carboxylic acid + primary amine to secondary amide |
+  | amide coupling 2 | `2.1.1.1` | Carboxylic acid + primary amine to secondary amide |
+  | Suzuki coupling | `3.1.1.1` | Aryl bromide + Arylboronic acid to Biaryl |
+
+- `mapping_v1.json`, the seed plus the new classes (about six new lines).
+- `artifacts/`, the answer of each agent.
+
+The LLM writes the class names, so the wording and the numbers below level 2
+can differ between runs.
+
+To run on your own data, copy `examples/config.example.json`, set `input_csv`
+to a CSV in the format below, and set `output_csv`.
 
 From Python:
 
@@ -153,6 +200,10 @@ works.
 `test_mode.start_stage` and `test_mode.stop_after_stage` start or stop a run at
 a given stage, reading earlier results from `hierarchy_codes_path`,
 `detailed_results_path` and `verify_results_path`.
+
+## Pseudocode
+
+`docs/pseudocode.tex` gives the whole procedure as a LaTeX algorithm.
 
 ## Reproducing the published runs
 

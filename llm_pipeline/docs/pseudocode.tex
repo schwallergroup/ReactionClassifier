@@ -1,0 +1,49 @@
+% Requires: \usepackage{algorithm} \usepackage{algpseudocode} \usepackage{amsmath}
+\begin{algorithm}[t]
+\caption{Cohort-level reaction classification with taxonomy growth}
+\label{alg:pipeline}
+\begin{algorithmic}[1]
+\Require Reactions $R$, each with a template hash $h(r)$ (the agents see the reaction SMILES of a cohort and its shared template); taxonomy $\mathcal{T}$ mapping each level-2 code $p$ (e.g.\ \texttt{2.1}) to the list $\mathcal{T}[p]$ of classes below it; batch size $B$; sample size $n$; seed $s$; aggregator chunk size $m$
+\Ensure A class $c(r)$ for every $r \in R$; the grown taxonomy $\mathcal{T}$
+\State $\mathcal{C} \gets$ partition of $R$ by template hash \Comment{one cohort per template}
+\ForAll{cohorts $C \in \mathcal{C}$}
+  \State $S_C \gets C$ if $|C| \le n$, else a uniform sample of $n$ reactions of $C$, drawn with seed $(s, h(C))$
+\EndFor
+\ForAll{batches $\mathcal{B} \subseteq \mathcal{C}$ of at most $B$ cohorts}
+  \ForAll{$C \in \mathcal{B}$} \Comment{one LLM call per cohort and agent, in parallel}
+    \State $p_C \gets \Call{HierarchyAgent}{S_C}$ \Comment{one level-2 code}
+    \State $c_C \gets \Call{DetailedAgent}{S_C,\ \mathcal{T}[p_C]}$ \Comment{a class in $\mathcal{T}[p_C]$, or $p_C$\texttt{.Other}}
+    \If{$c_C$ is a bare level-2 code}
+      \State $c_C \gets c_C$\texttt{.Other}
+    \EndIf
+    \State $q_C \gets$ first two levels of $c_C$
+    \State $v_C \gets \Call{VerifierAgent}{S_C,\ c_C,\ \mathcal{T}[q_C]}$ \Comment{accept or reject, with a reason}
+  \EndFor
+  \State $\mathcal{J} \gets \{C \in \mathcal{B} : v_C = \text{reject}\}$ \Comment{accepted cohorts keep $c_C$}
+  \ForAll{$C \in \mathcal{J}$}
+    \State $\pi_C \gets \Call{GeneratorAgent}{S_C,\ \mathcal{T}[q_C]}$ \Comment{proposed new class: code, name, condition variants}
+  \EndFor
+  \ForAll{level-2 codes $q$ with $\mathcal{J}_q = \{C \in \mathcal{J} : q_C = q\} \neq \emptyset$}
+    \ForAll{chunks $\mathcal{K} \subseteq \mathcal{J}_q$ of at most $m$ cohorts}
+      \State $(L,\ a) \gets \Call{AggregatorAgent}{\{\pi_C\}_{C \in \mathcal{K}},\ \mathcal{T}[q]}$ \Comment{new lines $L$, classes $a_C$}
+      \State $X \gets \emptyset$
+      \ForAll{lines $(\text{code},\ \text{name}) \in L$}
+        \If{code $\notin \mathcal{T}$}
+          \State add $(\text{code},\ \text{name})$ to $\mathcal{T}$ \Comment{visible to all later calls}
+        \ElsIf{$\mathcal{T}$ holds code with a different name}
+          \State $X \gets X \cup \{\text{code}\}$ \Comment{conflict: line skipped}
+        \EndIf
+      \EndFor
+      \ForAll{$C \in \mathcal{K}$}
+        \State $c_C \gets a_C$ if $a_C \notin X$, else \texttt{CONFLICT:}$a_C$
+      \EndFor
+    \EndFor
+  \EndFor
+  \State write $\mathcal{T}$ to disk
+\EndFor
+\ForAll{$C \in \mathcal{C}$, $r \in C$}
+  \State $c(r) \gets c_C$ \Comment{the cohort's class goes to every reaction with that template}
+\EndFor
+\State \Return $c,\ \mathcal{T}$
+\end{algorithmic}
+\end{algorithm}

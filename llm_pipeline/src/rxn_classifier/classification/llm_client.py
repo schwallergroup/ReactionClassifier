@@ -130,7 +130,11 @@ class GoogleGenAIClient(BaseLLMClient):
             api_key = os.getenv("GEMINI_API_KEY")
             if not api_key:
                 raise RuntimeError("GEMINI_API_KEY is not set in environment and use_vertex_ai=False.")
-            self._client = genai.Client(api_key=api_key)
+            # Pin the beta API: newer google-genai releases default to v1, which does
+            # not serve preview models.
+            self._client = genai.Client(
+                api_key=api_key, http_options=genai.types.HttpOptions(api_version="v1beta")
+            )
             print(f"[GoogleGenAIClient] Initialized with API key")
 
     def _make_config(self, system_prompt: str):

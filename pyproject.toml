@@ -38,3 +38,6 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 reactionclassifier = ["data/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

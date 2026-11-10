@@ -73,6 +73,19 @@ path = download_database()     # downloads + caches the parquet, returns its pat
 The released database **excludes NameRXN-derived columns** (`NAME`, `CLASS`);
 NameRXN is proprietary and its labels are not redistributed.
 
+## LLM pipeline that built the taxonomy
+
+`llm_pipeline/` holds the five-agent LLM pipeline (hierarchy, detailed,
+verifier, generator, aggregator) that assigned the reactions to classes and
+grew the taxonomy. It is a separate package with its own install and README:
+
+```bash
+pip install -e llm_pipeline
+cd llm_pipeline && rxn-classify --config examples/config.example.json
+```
+
+See `llm_pipeline/README.md`.
+
 ## Detail
 
 - The MDP fingerprint is a Morgan difference (reactant⊕product bit-unions)
